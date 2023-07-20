@@ -6,6 +6,6 @@ public class BaseDamageProvider : IDamageProvider
 {
     public void CalculateDamage(DamageInfo damageInfo)
     {
-        throw new System.NotImplementedException();
+        damageInfo.calculatedDamage = damageInfo.damage;
     }
 }

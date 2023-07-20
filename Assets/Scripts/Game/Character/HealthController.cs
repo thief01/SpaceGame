@@ -18,13 +18,13 @@ public class HealthController : MonoBehaviour, IDamageable
     private int currentHealth;
 
     [Inject]
-    private IDamageProvider damageProvider;
-
+    public IDamageProvider damageProvider;
+    
     private void Awake()
     {
         Respawn();
     }
-
+    
     public void Respawn()
     {
         currentHealth = baseHealth;
@@ -35,7 +35,8 @@ public class HealthController : MonoBehaviour, IDamageable
     public void DealDamage(DamageInfo damageInfo)
     {
         damageInfo.damageTarget = transform;
-        
+        damageProvider.CalculateDamage(damageInfo);
+        currentHealth -= (int)damageInfo.calculatedDamage;
         OnReceiveDamage.Invoke(damageInfo);
     }
 

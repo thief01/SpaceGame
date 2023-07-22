@@ -17,7 +17,7 @@ public class HealthControllerTest : ZenjectUnitTestFixture
         base.Setup();
         ZenjectInstaller.Install(Container);
         
-        gameObject = new GameObject("Health controller");//.AddComponent<HealthController>();
+        gameObject = new GameObject("Health controller");
         healthController = Container.InstantiateComponent<HealthController>(gameObject);
     }
 

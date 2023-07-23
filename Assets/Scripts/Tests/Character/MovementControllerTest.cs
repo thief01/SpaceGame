@@ -25,19 +25,19 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     }
 
     [Test]
-    public void TestRigidbody()
+    public void Rigidbody()
     {
         Assert.IsNotNull(rigidbody2D);
     }
 
     [Test]
-    public void TestMovementController()
+    public void MovementController()
     {
         Assert.IsNotNull(movementController);
     }
 
     [UnityTest]
-    public IEnumerator AccelerationTest()
+    public IEnumerator Acceleration()
     {
         yield return null;
         movementController.Accelerate(1);
@@ -47,7 +47,7 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     private const float ACCELERATION_TOLLERANCY_TIME_MULTIPLITER = 2;
     
     [UnityTest]
-    public IEnumerator AccelerationOneSecondTest()
+    public IEnumerator AccelerationOneSecond()
     {
         yield return null;
 
@@ -67,16 +67,16 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     [UnityTest]
     public IEnumerator RotateLeft()
     {
-        yield return RotatingSimpleTest(new Vector3(-1, 0, 0));
+        yield return RotatingSimple(new Vector3(-1, 0, 0));
     }
     
     [UnityTest]
     public IEnumerator RotateRight()
     {
-        yield return RotatingSimpleTest(new Vector3(1, 0, 0));
+        yield return RotatingSimple(new Vector3(1, 0, 0));
     }
 
-    private IEnumerator RotatingSimpleTest(Vector3 expectedVector)
+    private IEnumerator RotatingSimple(Vector3 expectedVector)
     {
         float deltaTime = 0;
         float expectedTime = 90 / movementController.RotatingAccelerationDegree;

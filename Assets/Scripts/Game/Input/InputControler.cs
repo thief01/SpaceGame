@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class InputController : MonoBehaviour
+public class InputControler : MonoBehaviour
 {
     private MovementController movementController;
+    private WeaponControler weaponControler;
 
     private PlayerInput playerInput;
     
@@ -15,9 +16,11 @@ public class InputController : MonoBehaviour
         playerInput = new PlayerInput();
         
         movementController = GetComponent<MovementController>();
+        weaponControler = GetComponent<WeaponControler>();
         playerInput.Enable();
-        
-        playerInput.Ship.Shoot.performed += (ctg) => Debug.Log("Shoot");
+
+        playerInput.Ship.Shoot.performed +=
+            (ctg) => weaponControler.Shoot(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     private void Update()

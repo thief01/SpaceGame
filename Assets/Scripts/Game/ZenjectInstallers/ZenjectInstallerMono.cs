@@ -9,5 +9,6 @@ public class ZenjectInstallerMono : MonoInstaller<ZenjectInstallerMono>
     {
         Debug.Log("Installing bindings");
         Container.Bind<IDamageProvider>().To<BaseDamageProvider>().FromInstance(new BaseDamageProvider());
+        Container.Bind<PlayerData>().AsSingle();
     }
 }

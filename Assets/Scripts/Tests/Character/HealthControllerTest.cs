@@ -22,7 +22,7 @@ public class HealthControllerTest : ZenjectUnitTestFixture
     }
 
     [Test]
-    public void DamageProviderTest()
+    public void DamageProvider()
     {
         Assert.NotNull(Container.Resolve<IDamageProvider>());
     }

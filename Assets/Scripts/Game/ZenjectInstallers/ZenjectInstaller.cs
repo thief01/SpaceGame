@@ -8,5 +8,6 @@ public class ZenjectInstaller : Installer<ZenjectInstaller>
     {
         Debug.Log("Installing bindings");
         Container.Bind<IDamageProvider>().To<BaseDamageProvider>().FromInstance(new BaseDamageProvider());
+        Container.Bind<PlayerData>().AsSingle();
     }
 }

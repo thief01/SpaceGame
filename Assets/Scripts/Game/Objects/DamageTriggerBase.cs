@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageTriggerBase : MonoBehaviour
 {
+    public UnityEvent OnDie = new UnityEvent();
     [SerializeField] private float damage;
     private DamageInfo damageInfo = new DamageInfo();
 
@@ -26,6 +28,14 @@ public class DamageTriggerBase : MonoBehaviour
         if (damageable == null)
             return;
         damageable.DealDamage(damageInfo);
-        Destroy(gameObject);
+        if (OnDie != null && OnDie.GetPersistentEventCount() > 0)
+        {
+            OnDie.Invoke();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }

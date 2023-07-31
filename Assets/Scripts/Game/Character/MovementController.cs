@@ -11,6 +11,7 @@ public class MovementController : MonoBehaviour
 
     [SerializeField] private float movingAcceleration = 5;
     [SerializeField] private float rotatingAccelerationDegree = 180;
+    [SerializeField] private Transform objectToRotate;
     private Rigidbody2D rigidbody2D;
 
     private bool movementBlocked = false;
@@ -26,13 +27,13 @@ public class MovementController : MonoBehaviour
             return;
         
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-        transform.eulerAngles = new Vector3(0, 0,
-            Mathf.MoveTowardsAngle(transform.eulerAngles.z, angle, rotatingAccelerationDegree * Time.deltaTime));
+        objectToRotate.eulerAngles = new Vector3(0, 0,
+            Mathf.MoveTowardsAngle(objectToRotate.eulerAngles.z, angle, rotatingAccelerationDegree * Time.deltaTime));
     }
 
     public void Accelerate(float input)
     {
-        Vector3 acceleration = transform.up * movingAcceleration * input * Time.deltaTime;
+        Vector3 acceleration = objectToRotate.up * movingAcceleration * input * Time.deltaTime;
 
         rigidbody2D.velocity += new Vector2(acceleration.x, acceleration.y);
     }

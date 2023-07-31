@@ -114,6 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760c5745d3475b74cbdb7fd7d63188cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnBeforeDie:
+    m_PersistentCalls:
+      m_Calls: []
   OnDie:
     m_PersistentCalls:
       m_Calls: []
@@ -138,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingAcceleration: 4.5
   rotatingAccelerationDegree: 180
+  objectToRotate: {fileID: 1060960503913810339}
 --- !u!114 &6636988570591302616
 MonoBehaviour:
   m_ObjectHideFlags: 0

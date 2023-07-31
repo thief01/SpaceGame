@@ -9,6 +9,9 @@ using Zenject;
 [TestFixture]
 public class MovementControllerTest : ZenjectUnitTestFixture
 {
+    private const float MAX_TIME_OUT = 15;
+    private const float ACCELERATION_TOLLERANCY_TIME_MULTIPLITER = 2;
+    
     private MovementController movementController;
     private GameObject gameObject;
     private Rigidbody2D rigidbody2D;
@@ -43,25 +46,54 @@ public class MovementControllerTest : ZenjectUnitTestFixture
         movementController.Accelerate(1);
         Assert.Greater(rigidbody2D.velocity.magnitude, 0);
     }
-
-    private const float ACCELERATION_TOLLERANCY_TIME_MULTIPLITER = 2;
     
     [UnityTest]
     public IEnumerator AccelerationOneSecond()
     {
-        yield return null;
-
-        float deltaTime = 0;
-        float expectedTime = (movementController.MovingAcceleration / movementController.MovingAcceleration) *
-                             ACCELERATION_TOLLERANCY_TIME_MULTIPLITER;
-        while (deltaTime <= expectedTime) 
-        {
-            yield return null;
-            movementController.Accelerate(1);
-            deltaTime += Time.deltaTime;
-        }
-        
+        yield return Accelerate();
         Assert.GreaterOrEqual(rigidbody2D.velocity.magnitude, movementController.MovingAcceleration);
+    }
+
+    [UnityTest]
+    public IEnumerator EmergencyStop()
+    {
+        yield return Accelerate();
+        movementController.InstaStop();
+        yield return WaitForStopOrTimeout();
+        
+        float magnitude = rigidbody2D.velocity.magnitude;
+        Assert.LessOrEqual(magnitude, 0);
+    }
+    
+    [UnityTest]
+    public IEnumerator Stop()
+    {
+        yield return Accelerate();
+        movementController.Stop();
+        yield return WaitForStopOrTimeout();
+        
+        float magnitude = rigidbody2D.velocity.magnitude;
+        Assert.LessOrEqual(magnitude, 0);
+    }
+    
+    /*
+     * This test doesn't pass.
+     * There are two solutions.
+     * First: Fix current solution.
+     * Second: if any force will be added then stop Stopping coroutine.
+     */
+    [UnityTest]
+    public IEnumerator StopWithInterjectSpeed()
+    {
+        yield return Accelerate();
+        movementController.Stop();
+        
+        Vector3 oppositeVelocity = -rigidbody2D.velocity;
+        rigidbody2D.velocity = oppositeVelocity * 2.5f;
+        yield return WaitForStopOrTimeout();
+        
+        float magnitude = rigidbody2D.velocity.magnitude;
+        Assert.LessOrEqual(magnitude, 0);
     }
     
     [UnityTest]
@@ -95,5 +127,28 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     public void TearDown()
     {
         Container.UnbindAll();
+    }
+    
+    private IEnumerator Accelerate()
+    {
+        float deltaTime = 0;
+        float expectedTime = (movementController.MovingAcceleration / movementController.MovingAcceleration) *
+                             ACCELERATION_TOLLERANCY_TIME_MULTIPLITER;
+        while (deltaTime <= expectedTime) 
+        {
+            yield return null;
+            movementController.Accelerate(1);
+            deltaTime += Time.deltaTime;
+        }
+    }
+
+    private IEnumerator WaitForStopOrTimeout()
+    {
+        float timeOutTimer = 0;
+        while (rigidbody2D.velocity.magnitude >= 0 && timeOutTimer <= MAX_TIME_OUT)
+        {
+            yield return null;
+            timeOutTimer += Time.deltaTime;
+        }
     }
 }

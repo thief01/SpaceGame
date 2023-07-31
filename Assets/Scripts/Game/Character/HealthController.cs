@@ -8,8 +8,9 @@ using Zenject;
 public class HealthController : MonoBehaviour, IDamageable
 {
     public int CurrentHealth => currentHealth;
-    
-    public UnityEvent OnDie = new UnityEvent();
+
+    public UnityEvent<DamageInfo>OnBeforeDie = new UnityEvent<DamageInfo>();
+    public UnityEvent<DamageInfo>OnDie = new UnityEvent<DamageInfo>();
     public UnityEvent OnRespawn = new UnityEvent();
     public UnityEvent<DamageInfo>OnReceiveDamage = new UnityEvent<DamageInfo>();
     
@@ -38,10 +39,16 @@ public class HealthController : MonoBehaviour, IDamageable
         damageProvider.CalculateDamage(damageInfo);
         currentHealth -= (int)damageInfo.calculatedDamage;
         OnReceiveDamage.Invoke(damageInfo);
+
+        if (currentHealth <= 0)
+        {
+            OnBeforeDie.Invoke(damageInfo);
+            Kill(damageInfo);
+        }
     }
 
-    public void Kill()
+    public void Kill(DamageInfo damageInfo)
     {
-        OnDie.Invoke();
+        OnDie.Invoke(damageInfo);
     }
 }

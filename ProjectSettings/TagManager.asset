@@ -42,3 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ships
+    uniqueID: 2821911177
+    locked: 0
+  - name: Bullets
+    uniqueID: 4022116545
+    locked: 0
+  - name: Effects
+    uniqueID: 2465041777
+    locked: 0
+  - name: Texts
+    uniqueID: 4267767469
+    locked: 0

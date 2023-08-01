@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadController : MonoBehaviour
+public class DeadControler : MonoBehaviour
 {
     [SerializeField] private GameObject spawnFX;
     [SerializeField] private float fxAliveTime;

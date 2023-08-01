@@ -16,6 +16,8 @@ public class MovementController : MonoBehaviour
 
     private bool movementBlocked = false;
 
+    private Coroutine breakingCoroutineRef;
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -25,8 +27,8 @@ public class MovementController : MonoBehaviour
     {
         if (direction == Vector2.zero)
             return;
-        
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+
+        float angle = CalculateAngleFromDirection(direction);
         objectToRotate.eulerAngles = new Vector3(0, 0,
             Mathf.MoveTowardsAngle(objectToRotate.eulerAngles.z, angle, rotatingAccelerationDegree * Time.deltaTime));
     }
@@ -37,6 +39,11 @@ public class MovementController : MonoBehaviour
 
         rigidbody2D.velocity += new Vector2(acceleration.x, acceleration.y);
     }
+
+    private float CalculateAngleFromDirection(Vector2 direction)
+    {
+        return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+    }
     
     public void InstaStop()
     {
@@ -45,25 +52,30 @@ public class MovementController : MonoBehaviour
 
     public void Stop()
     {
-        StartCoroutine(StoppingCoroutine());
+        if(breakingCoroutineRef!=null)
+            StopCoroutine(breakingCoroutineRef);
+        breakingCoroutineRef = StartCoroutine(BreakingCoroutine());
     }
 
-    private IEnumerator StoppingCoroutine()
+    private IEnumerator BreakingCoroutine()
     {
         movementBlocked = true;
 
-        Vector2 opposedDirection = -rigidbody2D.velocity.normalized;
+        
 
         while (rigidbody2D.velocity.magnitude > 0)
         {
-            if(Vector2.Distance(opposedDirection, transform.up) > 0.01f)
+            Vector2 opposedDirection = -rigidbody2D.velocity.normalized;
+            float calculatedAngle = CalculateAngleFromDirection(opposedDirection);
+            float deltaAngle = Mathf.DeltaAngle(objectToRotate.eulerAngles.z, calculatedAngle);
+            if(Mathf.Abs(deltaAngle) > 0.01f)
             {
                 Rotate(opposedDirection);
                 yield return null;
             }
             else
             {
-                if(rigidbody2D.velocity.magnitude > 0.1f)
+                if(rigidbody2D.velocity.magnitude > 0.5f)
                 {
                     Accelerate(1);
                     yield return null;

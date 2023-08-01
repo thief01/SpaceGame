@@ -176,34 +176,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid
       objectReference: {fileID: 0}
-    - target: {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1763858994}
-    - target: {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnDie
-      objectReference: {fileID: 0}
-    - target: {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DeadController, Game
-      objectReference: {fileID: 0}
-    - target: {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -736,17 +708,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
---- !u!114 &1763858994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5189265190988408232, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-  m_PrefabInstance: {fileID: 8083153}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce0d8144de88c44dbb14d93add1cb5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1834921822
 GameObject:
   m_ObjectHideFlags: 3

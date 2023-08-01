@@ -33,10 +33,10 @@ public class ZenjectInstallerMono : MonoInstaller<ZenjectInstallerMono>
 
     private void InitPlayer()
     {
-        var player = ships.GetNewObject().GetComponent<MovementController>();
+        var player = ships.GetNewObject().GetComponent<MovementControler>();
         player.transform.position = Vector3.zero;
         player.transform.eulerAngles = Vector3.zero;
-        Container.Bind<MovementController>().To<MovementController>().FromInstance(player.GetComponent<MovementController>())
+        Container.Bind<MovementControler>().To<MovementControler>().FromInstance(player.GetComponent<MovementControler>())
             .AsSingle();
         
         CameraManager cameraManager = Instantiate(this.cameraManager).GetComponent<CameraManager>();

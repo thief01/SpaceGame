@@ -21,10 +21,11 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     {
         base.Setup();
         ZenjectInstaller.Install(Container);
-        
-        gameObject = new GameObject("Movement controller");
-        movementControler = Container.InstantiateComponent<MovementControler>(gameObject);
-        rigidbody2D = movementControler.GetComponent<Rigidbody2D>();
+
+        var obj = Resources.Load<GameObject>("Tests/PlayerTest");
+        gameObject = GameObject.Instantiate(obj);
+        movementControler = gameObject.GetComponent<MovementControler>();
+        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
     [Test]
@@ -119,8 +120,11 @@ public class MovementControllerTest : ZenjectUnitTestFixture
             movementControler.Rotate(expectedVector);
             deltaTime += Time.deltaTime;
         }
-        
-        Assert.True(movementControler.transform.up == expectedVector, $"transofmr.up equal: {movementControler.transform.up}\n expected: {expectedVector}");
+
+        var currentValue = movementControler.ObjectToRotate.transform.up;
+
+        Assert.True(currentValue == expectedVector,
+            $"transofmr.up equal: {currentValue}\n expected: {expectedVector}");
     }
     
     [TearDown]

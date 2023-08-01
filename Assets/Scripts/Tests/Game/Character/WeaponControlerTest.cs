@@ -16,7 +16,7 @@ public class WeaponControlerTest : ZenjectUnitTestFixture
     [SetUp]
     public override void Setup()
     {
-        weaponBehaviourBase = Resources.Load<WeaponBehaviourBase>("Test/TestWeapon");
+        weaponBehaviourBase = Resources.Load<WeaponBehaviourBase>("Test/Weapon");
         GameObject g = new GameObject("Cooldown and weapon test");
         weaponControler = g.AddComponent<WeaponControler>();
         weaponControler.SetNewWeapon(weaponBehaviourBase);

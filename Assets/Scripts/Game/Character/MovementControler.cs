@@ -1,17 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementControler : MonoBehaviour
 {
     public float MovingAcceleration => movingAcceleration;
     public float RotatingAccelerationDegree => rotatingAccelerationDegree;
-
+    public Transform ObjectToRotate => objectToRotateToRotate;
     [SerializeField] private float movingAcceleration = 5;
     [SerializeField] private float rotatingAccelerationDegree = 180;
-    [SerializeField] private Transform objectToRotate;
+    [FormerlySerializedAs("objectToRotate")] [SerializeField] private Transform objectToRotateToRotate;
     private Rigidbody2D rigidbody2D;
 
     private bool movementBlocked = false;
@@ -29,13 +31,13 @@ public class MovementControler : MonoBehaviour
             return;
 
         float angle = CalculateAngleFromDirection(direction);
-        objectToRotate.eulerAngles = new Vector3(0, 0,
-            Mathf.MoveTowardsAngle(objectToRotate.eulerAngles.z, angle, rotatingAccelerationDegree * Time.deltaTime));
+        objectToRotateToRotate.eulerAngles = new Vector3(0, 0,
+            Mathf.MoveTowardsAngle(objectToRotateToRotate.eulerAngles.z, angle, rotatingAccelerationDegree * Time.deltaTime));
     }
 
     public void Accelerate(float input)
     {
-        Vector3 acceleration = objectToRotate.up * movingAcceleration * input * Time.deltaTime;
+        Vector3 acceleration = objectToRotateToRotate.up * movingAcceleration * input * Time.deltaTime;
 
         rigidbody2D.velocity += new Vector2(acceleration.x, acceleration.y);
     }
@@ -67,7 +69,7 @@ public class MovementControler : MonoBehaviour
         {
             Vector2 opposedDirection = -rigidbody2D.velocity.normalized;
             float calculatedAngle = CalculateAngleFromDirection(opposedDirection);
-            float deltaAngle = Mathf.DeltaAngle(objectToRotate.eulerAngles.z, calculatedAngle);
+            float deltaAngle = Mathf.DeltaAngle(objectToRotateToRotate.eulerAngles.z, calculatedAngle);
             if(Mathf.Abs(deltaAngle) > 0.01f)
             {
                 Rotate(opposedDirection);

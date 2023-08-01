@@ -60,26 +60,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6636988570591302616, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4332206048332657767}
+      addedObject: {fileID: 2225}
     - targetCorrespondingSourceObject: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2342414280647358772}
+      addedObject: {fileID: 2165}
+    - targetCorrespondingSourceObject: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2334}
     - targetCorrespondingSourceObject: {fileID: 4936722757497360150, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8913105530360055687}
+      addedObject: {fileID: 2364}
   m_SourcePrefab: {fileID: 100100000, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
 --- !u!1 &20215667095703175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4936722757497360150, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
   m_PrefabInstance: {fileID: 4955385913901613457}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8913105530360055687
+--- !u!114 &2364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +104,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
   m_PrefabInstance: {fileID: 4955385913901613457}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4332206048332657767
+--- !u!114 &2225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,12 +123,13 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2342414280647358772}
-  - {fileID: 8913105530360055687}
+  - {fileID: 2165}
+  - {fileID: 2334}
+  - {fileID: 2364}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2342414280647358772
+--- !u!114 &2165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,3 +145,15 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &2334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186863166128905400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735318dfc0aebf0419096ba2008b9b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

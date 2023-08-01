@@ -28,14 +28,6 @@ public class DamageTriggerBase : MonoBehaviour
         if (damageable == null)
             return;
         damageable.DealDamage(damageInfo);
-        if (OnDie != null && OnDie.GetPersistentEventCount() > 0)
-        {
-            OnDie.Invoke();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
+        OnDie.Invoke();
     }
 }

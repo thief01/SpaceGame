@@ -23,10 +23,10 @@ public class ZenjectInstallerMono : MonoInstaller<ZenjectInstallerMono>
         Container.Bind<IDamageProvider>().To<BaseDamageProvider>().FromInstance(new BaseDamageProvider());
 
         ships = new SimplePool(ship, 1);
-        // Container.Bind<BasePool>().WithId("Bullets").FromInstance(new SimplePool(bullet, 200));
+        Container.Bind<BasePool>().WithId("Bullets").FromInstance(new SimplePool(bullet, 200));
         Container.Bind<BasePool>().WithId("Ships").FromInstance(ships);
-        // Container.Bind<BasePool>().WithId("Asteroids").FromInstance(new SimplePool(asteroid, 25));
-        // Container.Bind<BasePool>().WithId("Explosions").FromInstance(new SimplePool(explosion, 25));
+        Container.Bind<BasePool>().WithId("Asteroids").FromInstance(new SimplePool(asteroid, 25));
+        Container.Bind<BasePool>().WithId("Explosions").FromInstance(new SimplePool(explosion, 25));
         InitPlayer();
         InjectScriptables();
     }

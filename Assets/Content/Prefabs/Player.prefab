@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 309364155359301676}
   - component: {fileID: 8027952418856336560}
   - component: {fileID: 5523825973982557342}
-  - component: {fileID: 6636988570591302616}
   - component: {fileID: 4260791703874666924}
   - component: {fileID: 2490193444633268923}
   - component: {fileID: 237600496774254057}
@@ -38,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 1060960503913810339}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &4140489852832747116
 CircleCollider2D:
@@ -143,18 +142,6 @@ MonoBehaviour:
   movingAcceleration: 4.5
   rotatingAccelerationDegree: 180
   objectToRotate: {fileID: 1060960503913810339}
---- !u!114 &6636988570591302616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3843969168143768873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9edc4773381b8040a9a58798b3af5ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4260791703874666924
 MonoBehaviour:
   m_ObjectHideFlags: 0

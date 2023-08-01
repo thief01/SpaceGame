@@ -2,29 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 
 public class InputControler : MonoBehaviour
 {
-    private MovementController movementController;
-    private WeaponControler weaponControler;
+    [Inject]
+    public MovementController movementController;
+    public WeaponControler weaponControler;
 
     private PlayerInput playerInput;
     
-    private void Awake()
+    private IEnumerator Start()
     {
-        playerInput = new PlayerInput();
+        yield return null;
+        weaponControler = movementController.GetComponent<WeaponControler>();
         
-        movementController = GetComponent<MovementController>();
-        weaponControler = GetComponent<WeaponControler>();
+        playerInput = new PlayerInput();
         playerInput.Enable();
-
         playerInput.Ship.Shoot.performed +=
             (ctg) => weaponControler.Shoot(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     private void Update()
     {
+        if (movementController == null || weaponControler == null)
+            return;
+        
         movementController.Rotate(playerInput.Ship.Moving.ReadValue<Vector2>());
         movementController.Accelerate(playerInput.Ship.Acceleration.ReadValue<float>());
 

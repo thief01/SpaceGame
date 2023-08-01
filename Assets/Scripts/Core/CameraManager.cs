@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public static CameraManager instance;
-    public CinemachineVirtualCamera CinemachineVirtualCamera { get; private set; }
-    private void Awake()
+    public CinemachineVirtualCamera CinemachineVirtualCamera
     {
-        if (instance != null && instance != this)
+        get
         {
-            Destroy(gameObject);
-            return;
+            if (cinemachineVirtualCamera == null)
+            {
+                cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+            }
+
+            return cinemachineVirtualCamera;
         }
-        instance = this;
-        CinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
-
+    private CinemachineVirtualCamera cinemachineVirtualCamera;
 }

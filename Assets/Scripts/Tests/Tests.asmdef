@@ -6,7 +6,9 @@
         "UnityEditor.TestRunner",
         "Game",
         "Zenject",
-        "Zenject-TestFramework"
+        "Zenject-TestFramework",
+        "Core",
+        "Multiplayer"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

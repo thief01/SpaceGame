@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MovementController : MonoBehaviour
+public class MovementControler : MonoBehaviour
 {
     public float MovingAcceleration => movingAcceleration;
     public float RotatingAccelerationDegree => rotatingAccelerationDegree;

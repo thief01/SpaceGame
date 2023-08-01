@@ -12,7 +12,7 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     private const float MAX_TIME_OUT = 15;
     private const float ACCELERATION_TOLLERANCY_TIME_MULTIPLITER = 2;
     
-    private MovementController movementController;
+    private MovementControler movementControler;
     private GameObject gameObject;
     private Rigidbody2D rigidbody2D;
 
@@ -23,8 +23,8 @@ public class MovementControllerTest : ZenjectUnitTestFixture
         ZenjectInstaller.Install(Container);
         
         gameObject = new GameObject("Movement controller");
-        movementController = Container.InstantiateComponent<MovementController>(gameObject);
-        rigidbody2D = movementController.GetComponent<Rigidbody2D>();
+        movementControler = Container.InstantiateComponent<MovementControler>(gameObject);
+        rigidbody2D = movementControler.GetComponent<Rigidbody2D>();
     }
 
     [Test]
@@ -36,14 +36,14 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     [Test]
     public void MovementController()
     {
-        Assert.IsNotNull(movementController);
+        Assert.IsNotNull(movementControler);
     }
 
     [UnityTest]
     public IEnumerator Acceleration()
     {
         yield return null;
-        movementController.Accelerate(1);
+        movementControler.Accelerate(1);
         Assert.Greater(rigidbody2D.velocity.magnitude, 0);
     }
     
@@ -51,14 +51,14 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     public IEnumerator AccelerationOneSecond()
     {
         yield return Accelerate();
-        Assert.GreaterOrEqual(rigidbody2D.velocity.magnitude, movementController.MovingAcceleration);
+        Assert.GreaterOrEqual(rigidbody2D.velocity.magnitude, movementControler.MovingAcceleration);
     }
 
     [UnityTest]
     public IEnumerator EmergencyStop()
     {
         yield return Accelerate();
-        movementController.InstaStop();
+        movementControler.InstaStop();
         yield return WaitForStopOrTimeout();
         
         float magnitude = rigidbody2D.velocity.magnitude;
@@ -69,7 +69,7 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     public IEnumerator Stop()
     {
         yield return Accelerate();
-        movementController.Stop();
+        movementControler.Stop();
         yield return WaitForStopOrTimeout();
         
         float magnitude = rigidbody2D.velocity.magnitude;
@@ -86,7 +86,7 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     public IEnumerator StopWithInterjectSpeed()
     {
         yield return Accelerate();
-        movementController.Stop();
+        movementControler.Stop();
         
         Vector3 oppositeVelocity = -rigidbody2D.velocity;
         rigidbody2D.velocity = oppositeVelocity * 2.5f;
@@ -111,16 +111,16 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     private IEnumerator RotatingSimple(Vector3 expectedVector)
     {
         float deltaTime = 0;
-        float expectedTime = 90 / movementController.RotatingAccelerationDegree;
+        float expectedTime = 90 / movementControler.RotatingAccelerationDegree;
 
         while (deltaTime <= expectedTime) 
         {
             yield return null;
-            movementController.Rotate(expectedVector);
+            movementControler.Rotate(expectedVector);
             deltaTime += Time.deltaTime;
         }
         
-        Assert.True(movementController.transform.up == expectedVector, $"transofmr.up equal: {movementController.transform.up}\n expected: {expectedVector}");
+        Assert.True(movementControler.transform.up == expectedVector, $"transofmr.up equal: {movementControler.transform.up}\n expected: {expectedVector}");
     }
     
     [TearDown]
@@ -132,12 +132,12 @@ public class MovementControllerTest : ZenjectUnitTestFixture
     private IEnumerator Accelerate()
     {
         float deltaTime = 0;
-        float expectedTime = (movementController.MovingAcceleration / movementController.MovingAcceleration) *
+        float expectedTime = (movementControler.MovingAcceleration / movementControler.MovingAcceleration) *
                              ACCELERATION_TOLLERANCY_TIME_MULTIPLITER;
         while (deltaTime <= expectedTime) 
         {
             yield return null;
-            movementController.Accelerate(1);
+            movementControler.Accelerate(1);
             deltaTime += Time.deltaTime;
         }
     }

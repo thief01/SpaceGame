@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 
 public class InputControler : MonoBehaviour
 {
-    [Inject]
-    public MovementController movementController;
+    [FormerlySerializedAs("movementController")] [Inject]
+    public MovementControler movementControler;
     public WeaponControler weaponControler;
 
     private PlayerInput playerInput;
@@ -16,7 +17,7 @@ public class InputControler : MonoBehaviour
     private IEnumerator Start()
     {
         yield return null;
-        weaponControler = movementController.GetComponent<WeaponControler>();
+        weaponControler = movementControler.GetComponent<WeaponControler>();
         
         playerInput = new PlayerInput();
         playerInput.Enable();
@@ -26,15 +27,15 @@ public class InputControler : MonoBehaviour
 
     private void Update()
     {
-        if (movementController == null || weaponControler == null)
+        if (movementControler == null || weaponControler == null)
             return;
         
-        movementController.Rotate(playerInput.Ship.Moving.ReadValue<Vector2>());
-        movementController.Accelerate(playerInput.Ship.Acceleration.ReadValue<float>());
+        movementControler.Rotate(playerInput.Ship.Moving.ReadValue<Vector2>());
+        movementControler.Accelerate(playerInput.Ship.Acceleration.ReadValue<float>());
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            movementController.Stop();
+            movementControler.Stop();
         }
     }
 }

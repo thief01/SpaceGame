@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 [CreateAssetMenu(menuName = "thief01/Weapons/Weapon base")]
 public class WeaponBehaviourBase : ScriptableObject
@@ -8,6 +9,8 @@ public class WeaponBehaviourBase : ScriptableObject
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected float bulletSpeed;
     [SerializeField] protected GameObject bulletPrefab;
+
+    [Inject(Id = "Bullets")] public BasePool bulletsPool;
     
     public virtual void Shoot(WeaponUserData weaponUserData)
     {
@@ -15,13 +18,15 @@ public class WeaponBehaviourBase : ScriptableObject
         {
             return;
         }
+        
         SpawnBullet(weaponUserData);
     }
 
     protected void SpawnBullet(WeaponUserData weaponUserData)
     {
-        GameObject g = Instantiate(bulletPrefab);
-        SetGameObjectData(g, weaponUserData);
+        var g = bulletsPool.GetNewObject();
+        g.KillWithDelay(30);
+        SetGameObjectData(g.gameObject, weaponUserData);
     }
 
     protected void SetGameObjectData(GameObject g, WeaponUserData weaponUserData)

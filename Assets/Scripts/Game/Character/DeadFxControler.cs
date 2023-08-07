@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Zenject;
 
-public class DeadControler : MonoBehaviour
+public class DeadFxControler : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnFX;
     [SerializeField] private float fxAliveTime;
 
+    [Inject(Id = "Explosions")] public BasePool fxPool;
 
     public void OnDie()
     {
-        if (spawnFX != null)
-        {
-            GameObject g = Instantiate(spawnFX);
-            g.transform.position = transform.position;
-            Destroy(g, fxAliveTime);
-        }
+        BasePoolObject g = fxPool.GetNewObject();
+        g.transform.position = transform.position;
+        g.KillWithDelay(fxAliveTime);
     }
 
 }

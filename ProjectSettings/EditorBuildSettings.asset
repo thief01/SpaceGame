@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PlayfabLogin.unity
+    guid: 4dd79f310def9f645a19404f15a66091
+  - enabled: 1
     path: Assets/Scenes/ConnectingScene.unity
     guid: 2e75f64b83ff25748b76a113e9716a5e
   - enabled: 1

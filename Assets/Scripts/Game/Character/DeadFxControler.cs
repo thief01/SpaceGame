@@ -15,9 +15,7 @@ public class DeadControler : MonoBehaviour
             GameObject g = Instantiate(spawnFX);
             g.transform.position = transform.position;
             Destroy(g, fxAliveTime);
-        }       
-
-        Destroy(gameObject);
+        }
     }
 
 }

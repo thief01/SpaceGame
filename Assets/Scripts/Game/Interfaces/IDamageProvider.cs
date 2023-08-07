@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Game.Classes;
 
-public interface IDamageProvider
+namespace Game.Interfaces
 {
-    void CalculateDamage(DamageInfo damageInfo);
+    public interface IDamageProvider
+    {
+        void CalculateDamage(DamageInfo damageInfo);
+    }
 }

@@ -1,26 +1,28 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BasePoolObject : MonoBehaviour
+namespace Core.Pooling
 {
-    public BasePool BasePool { get; set; }
-
-    public virtual void Kill()
+    public class BasePoolObject : MonoBehaviour
     {
-        StopAllCoroutines();
-        BasePool.ReturnObject(this);
-    }
+        public BasePool BasePool { get; set; }
 
-    public void KillWithDelay(float delay)
-    {
-        StopAllCoroutines();
-        StartCoroutine(KillDelay(delay));
-    }
+        public virtual void Kill()
+        {
+            StopAllCoroutines();
+            BasePool.ReturnObject(this);
+        }
 
-    private IEnumerator KillDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Kill();
+        public void KillWithDelay(float delay)
+        {
+            StopAllCoroutines();
+            StartCoroutine(KillDelay(delay));
+        }
+
+        private IEnumerator KillDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Kill();
+        }
     }
 }

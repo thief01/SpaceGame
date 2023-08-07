@@ -1,30 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using Core.Pooling;
 using Photon.Pun;
 using UnityEngine;
 
-public class MultiplayerPool : BasePool
+namespace Multiplayer
 {
-    public MultiplayerPool(GameObject gameObject, int countOfObjects = 20) : base(gameObject, countOfObjects)
+    public class MultiplayerPool : BasePool
     {
-        
-    }
-
-    public override void InitPool(GameObject gameObject, int countOfObjects)
-    {
-        for (int i = 0; i < countOfObjects; i++)
+        public MultiplayerPool(GameObject gameObject, int countOfObjects = 20) : base(gameObject, countOfObjects)
         {
-            GameObject g = PhotonNetwork.Instantiate(gameObject.name, Vector3.zero, Quaternion.identity);
-            g.SetActive(false);
-            var basePoolObject = g.GetComponent<BasePoolObject>();
-            if (basePoolObject == null)
-            {
-                Debug.LogWarning(string.Format(NOT_FOUND_BASE_POOL_OBJECT_WARNING, g.name));
-                basePoolObject = g.AddComponent<BasePoolObject>();
-            }
+        
+        }
 
-            basePoolObject.BasePool = this;
-            objects.Add(basePoolObject);
+        public override void InitPool(GameObject gameObject, int countOfObjects)
+        {
+            for (int i = 0; i < countOfObjects; i++)
+            {
+                GameObject g = PhotonNetwork.Instantiate(gameObject.name, Vector3.zero, Quaternion.identity);
+                g.SetActive(false);
+                var basePoolObject = g.GetComponent<BasePoolObject>();
+                if (basePoolObject == null)
+                {
+                    Debug.LogWarning(string.Format(NOT_FOUND_BASE_POOL_OBJECT_WARNING, g.name));
+                    basePoolObject = g.AddComponent<BasePoolObject>();
+                }
+
+                basePoolObject.BasePool = this;
+                objects.Add(basePoolObject);
+            }
         }
     }
 }

@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class PhotonSpawner : MonoBehaviour
+namespace Multiplayer
 {
-    private void Awake()
+    public class PhotonSpawner : MonoBehaviour
     {
-        PhotonNetwork.Instantiate("PlayerPUN", Vector3.zero, Quaternion.identity);
+        private void Awake()
+        {
+            PhotonNetwork.Instantiate("PlayerPUN", Vector3.zero, Quaternion.identity);
+        }
+
+
     }
-
-
 }

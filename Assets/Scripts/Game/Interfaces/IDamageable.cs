@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Game.Classes;
 
-public interface IDamageable
+namespace Game.Interfaces
 {
-    void DealDamage(DamageInfo damageInfo);
+    public interface IDamageable
+    {
+        void DealDamage(DamageInfo damageInfo);
+    }
 }

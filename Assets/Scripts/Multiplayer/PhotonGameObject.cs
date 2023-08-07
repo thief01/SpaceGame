@@ -1,50 +1,49 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
-using UnityEngine;
 
-public class PhotonGameObject : MonoBehaviourPun, IPunObservable
+namespace Multiplayer
 {
-    private PhotonView photonView;
-    private void Awake()
+    public class PhotonGameObject : MonoBehaviourPun, IPunObservable
     {
-        photonView = GetComponent<PhotonView>();
-    }
-
-    private void OnEnable()
-    {
-        if (photonView.IsMine)
+        private PhotonView photonView;
+        private void Awake()
         {
-            photonView.RPC("SwitchEnableObject", RpcTarget.OthersBuffered, true);
+            photonView = GetComponent<PhotonView>();
         }
-    }
 
-    private void OnDisable()
-    {
-        if (photonView.IsMine)
+        private void OnEnable()
         {
-            photonView.RPC("SwitchEnableObject", RpcTarget.OthersBuffered, false);
+            if (photonView.IsMine)
+            {
+                photonView.RPC("SwitchEnableObject", RpcTarget.OthersBuffered, true);
+            }
         }
-    }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
+        private void OnDisable()
         {
-            stream.SendNext(gameObject.activeSelf);
+            if (photonView.IsMine)
+            {
+                photonView.RPC("SwitchEnableObject", RpcTarget.OthersBuffered, false);
+            }
         }
-        else
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            var active = (bool)stream.ReceiveNext();
-            gameObject.SetActive(active);
+            if (stream.IsWriting)
+            {
+                stream.SendNext(gameObject.activeSelf);
+            }
+            else
+            {
+                var active = (bool)stream.ReceiveNext();
+                gameObject.SetActive(active);
             
+            }
         }
-    }
 
-    [PunRPC]
-    public void SwitchEnableObject(bool active)
-    {
-        gameObject.SetActive(active);
+        [PunRPC]
+        public void SwitchEnableObject(bool active)
+        {
+            gameObject.SetActive(active);
+        }
     }
 }

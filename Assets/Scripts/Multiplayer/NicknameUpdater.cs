@@ -1,22 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TextMeshPro))]
-public class NicknameUpdater : MonoBehaviour
+namespace Multiplayer
 {
-    private TextMeshPro nickname;
-
-    private void Awake()
+    [RequireComponent(typeof(TextMeshPro))]
+    public class NicknameUpdater : MonoBehaviour
     {
-        nickname = GetComponent<TextMeshPro>();
-    }
+        private TextMeshPro nickname;
 
-    private void Update()
-    {
-        nickname.text = PhotonNetwork.NickName;
+        private void Awake()
+        {
+            nickname = GetComponent<TextMeshPro>();
+        }
+
+        private void Update()
+        {
+            nickname.text = PhotonNetwork.NickName;
+        }
     }
 }

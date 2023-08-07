@@ -432,7 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce0d8144de88c44dbb14d93add1cb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFX: {fileID: 0}
   fxAliveTime: 1
 --- !u!114 &-3040032830870110661
 MonoBehaviour:

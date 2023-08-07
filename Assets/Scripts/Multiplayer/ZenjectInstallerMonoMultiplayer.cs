@@ -18,10 +18,10 @@ namespace Multiplayer
             Debug.Log("Installing bindings");
             Container.Bind<IDamageProvider>().To<BaseDamageProvider>().FromInstance(new BaseDamageProvider());
         
-            Container.Bind<BasePool>().WithId("Bullets").FromInstance(new MultiplayerPool(bullet, 200));
-            Container.Bind<BasePool>().WithId("Ships").FromInstance(new MultiplayerPool(ship));
-            Container.Bind<BasePool>().WithId("Asteroids").FromInstance(new MultiplayerPool(asteroid, 50));
-            Container.Bind<BasePool>().WithId("Explosions").FromInstance(new MultiplayerPool(explosion, 50));
+            Container.Bind<BasePool>().WithId("Bullets").FromInstance(new MultiplayerPool(bullet, 20));
+            Container.Bind<BasePool>().WithId("Ships").FromInstance(new MultiplayerPool(ship, 1));
+            Container.Bind<BasePool>().WithId("Asteroids").FromInstance(new MultiplayerPool(asteroid, 30));
+            Container.Bind<BasePool>().WithId("Explosions").FromInstance(new MultiplayerPool(explosion, 30));
         }
     }
 }

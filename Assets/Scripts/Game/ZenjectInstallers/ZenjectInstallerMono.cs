@@ -44,22 +44,18 @@ namespace Game.ZenjectInstallers
             ships = new SimplePool(ship, 1);
             asteroids = new SimplePool(asteroid, 10);
             explosions = new SimplePool(explosion, 10);
-        
-            Container.Bind<BasePool>().WithId("Bullets").FromInstance(bullets);
-            Container.Bind<BasePool>().WithId("Ships").FromInstance(ships);
-            Container.Bind<BasePool>().WithId("Asteroids").FromInstance(asteroids);
-            Container.Bind<BasePool>().WithId("Explosions").FromInstance(explosions);
-        
-        
-            bullets.InitPool();
-            ships.InitPool();
-            asteroids.InitPool();
-            explosions.InitPool();
+            
+            BindNewPool(bullets, "Bullets");
+            BindNewPool(ships, "Ships");
+            BindNewPool(asteroids, "Asteroids");
+            BindNewPool(explosions, "Explosions");
+        }
 
-            allPools.Add(bullets);
-            allPools.Add(ships);
-            allPools.Add(asteroids);
-            allPools.Add(explosions);
+        private void BindNewPool(SimplePool simplePool, string poolId)
+        {
+            Container.Bind<SimplePool>().WithId(poolId).FromInstance(simplePool);
+            simplePool.InitPool();
+            allPools.Add(simplePool);
         }
 
         private void InitPlayer()

@@ -11,7 +11,15 @@ public class PhotonConnector : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
 
-        PhotonNetwork.ConnectUsingSettings();
+        if (PhotonNetwork.IsConnected)
+        {
+            OnConnectedToServer();
+        }
+        else
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
+        
 
         DontDestroyOnLoad(gameObject);
     }
@@ -48,7 +56,7 @@ public class PhotonConnector : MonoBehaviourPunCallbacks
         Debug.Log(PhotonNetwork.CurrentRoom);
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel(1);
+            PhotonNetwork.LoadLevel(2);
         }
         Debug.Log(PhotonNetwork.CurrentRoom.Players.Count);
     }

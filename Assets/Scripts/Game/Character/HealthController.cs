@@ -18,8 +18,13 @@ public class HealthController : MonoBehaviour, IDamageable
 
     private int currentHealth;
 
+    /*
+     * Zenject doesn't innject durning the object is off.
+     * So for now i have to force new Provider(); 
+     */
     [Inject]
-    public IDamageProvider damageProvider;
+    public IDamageProvider damageProvider = new BaseDamageProvider();
+    
     
     private void Awake()
     {

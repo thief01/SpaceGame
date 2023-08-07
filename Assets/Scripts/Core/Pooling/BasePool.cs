@@ -5,19 +5,31 @@ using UnityEngine;
 
 public class BasePool
 {
+    public BasePoolObject[] BasePoolObjects => objects.ToArray();
     protected const string NOT_FOUND_BASE_POOL_OBJECT_WARNING =
         "Objects: {0} doesn't contain BasePoolObject it will be added but you should add it in prefab.";
     
     protected List<BasePoolObject> objects = new List<BasePoolObject>();
 
+    protected GameObject baseGameObject;
+    protected int countOfObjects;
+
     public BasePool(GameObject gameObject, int countOfObjects = 20)
     {
-        InitPool(gameObject, countOfObjects);
+        //InitPool(gameObject, countOfObjects);
+        baseGameObject = gameObject;
+        this.countOfObjects = countOfObjects;
     }
 
+    
     public virtual void InitPool(GameObject gameObject, int countOfObjects = 20)
     {
         
+    }
+
+    public virtual void InitPool()
+    {
+        InitPool(baseGameObject, countOfObjects);
     }
 
     public virtual BasePoolObject GetNewObject()

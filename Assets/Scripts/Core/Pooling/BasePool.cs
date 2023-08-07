@@ -21,6 +21,14 @@ public class BasePool
         this.countOfObjects = countOfObjects;
     }
 
+    public void ForceActiveAllObjects(bool active)
+    {
+        for (int i = 0; i < objects.Count; i++)
+        {
+            objects[i].gameObject.SetActive(active);
+        }
+    }
+
     
     public virtual void InitPool(GameObject gameObject, int countOfObjects = 20)
     {

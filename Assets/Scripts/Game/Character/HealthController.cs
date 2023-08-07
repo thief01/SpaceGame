@@ -17,20 +17,27 @@ public class HealthController : MonoBehaviour, IDamageable
     [SerializeField] private int baseHealth = 5;
 
     private int currentHealth;
-
-    /*
-     * Zenject doesn't innject durning the object is off.
-     * So for now i have to force new Provider(); 
-     */
-    [Inject]
-    public IDamageProvider damageProvider = new BaseDamageProvider();
+    
+    [Inject] public IDamageProvider damageProvider;
     
     
     private void Awake()
     {
         Respawn();
     }
-    
+
+    private float time;
+    private void Update()
+    {
+        if (time > 1)
+        {
+            Debug.Log(gameObject.name + " " + damageProvider);
+            time = 0;
+        }
+
+        time += Time.deltaTime;
+    }
+
     public void Respawn()
     {
         currentHealth = baseHealth;

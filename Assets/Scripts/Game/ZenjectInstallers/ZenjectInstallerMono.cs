@@ -20,15 +20,18 @@ public class ZenjectInstallerMono : MonoInstaller<ZenjectInstallerMono>
     private SimplePool ships;
     private SimplePool asteroids;
     private SimplePool explosions;
-    
+
+    private List<SimplePool> allPools = new List<SimplePool>();
+
     public override void InstallBindings()
     {
         Debug.Log("Installing bindings");
         Container.Bind<IDamageProvider>().To<IDamageProvider>().FromInstance(new BaseDamageProvider());
         BindPools();
-        InitPlayer();
         InjectScriptables();
         InjectToPools();
+        
+        InitPlayer();
     }
 
     private void BindPools()
@@ -48,6 +51,11 @@ public class ZenjectInstallerMono : MonoInstaller<ZenjectInstallerMono>
         ships.InitPool();
         asteroids.InitPool();
         explosions.InitPool();
+
+        allPools.Add(bullets);
+        allPools.Add(ships);
+        allPools.Add(asteroids);
+        allPools.Add(explosions);
     }
 
     private void InitPlayer()
@@ -75,11 +83,11 @@ public class ZenjectInstallerMono : MonoInstaller<ZenjectInstallerMono>
 
     private void InjectToPools()
     {
-        foreach (var pool in Container.ResolveAll<BasePool>())
+        foreach (var pool in allPools)
         {
             for (int i = 0; i < pool.BasePoolObjects.Length; i++)
             {
-                Container.QueueForInject(pool.BasePoolObjects[i]);
+                Container.InjectGameObject(pool.BasePoolObjects[i].gameObject);
             }
         }
     }

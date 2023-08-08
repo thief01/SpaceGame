@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9258228ecd1904240a30df068f4ff1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 2225}
 --- !u!1001 &4955385913901613457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,9 +318,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7967914342866022292}
-    - targetCorrespondingSourceObject: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -3040032830870110661}
     - targetCorrespondingSourceObject: {fileID: 4936722757497360150, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2364}
@@ -387,8 +385,9 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2165}
   - {fileID: 2334}
-  - {fileID: -3040032830870110661}
+  - {fileID: 0}
   - {fileID: 2364}
+  - {fileID: 8769769033276855180}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -433,15 +432,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fxAliveTime: 1
---- !u!114 &-3040032830870110661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186863166128905400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735318dfc0aebf0419096ba2008b9b7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

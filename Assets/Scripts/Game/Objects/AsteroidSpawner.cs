@@ -35,12 +35,9 @@ namespace Game.Objects
 
         private void Update()
         {
-            if (!PhotonNetwork.IsConnected || photonView.IsMine)
-            {
-                KillAsteroidsOutOfZone();
-                UpdateAsteroids();
-                SpawnAsteroids();
-            }
+            KillAsteroidsOutOfZone();
+            UpdateAsteroids();
+            SpawnAsteroids();
         }
 
         private void OnDrawGizmosSelected()

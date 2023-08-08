@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 2490193444633268923, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
       propertyPath: weaponBehaviourBase
       value: 
-      objectReference: {fileID: 11400000, guid: 9319495032dda724a840cfd552d840f1, type: 2}
+      objectReference: {fileID: 11400000, guid: 8bda10cd2efb1f44ebd5f9e2411a5059, type: 2}
     - target: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
       propertyPath: m_Name
       value: PlayerPun

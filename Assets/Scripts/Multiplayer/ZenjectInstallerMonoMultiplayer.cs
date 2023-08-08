@@ -15,7 +15,7 @@ namespace Multiplayer
             bullets = new MultiplayerPool(bullet, 10);
             ships = new MultiplayerPool(ship, 1);
             asteroids = new MultiplayerPool(asteroid, 10);
-            explosions = new SimplePool(explosion, 10);
+            explosions = new MultiplayerPool(explosion, 10);
             
             BindNewPool(bullets, "Bullets");
             BindNewPool(ships, "Ships");

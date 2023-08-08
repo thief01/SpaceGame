@@ -62,9 +62,9 @@ namespace Multiplayer
             Debug.LogError(result.ErrorMessage);
         }
 
-        public void RandomLogin()
+        public void GuestLogin()
         {
-            PhotonNetwork.NickName = "RandomNickname_" + Random.Range(0, 100000);
+            PhotonNetwork.NickName = "Guest_" + Random.Range(0, 100000);
             SceneManager.LoadScene(1);
         }
     }

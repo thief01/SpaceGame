@@ -471,7 +471,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Random login
+  m_text: Guest login
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1635,7 +1635,7 @@ GameObject:
   - component: {fileID: 1440655388}
   - component: {fileID: 1440655387}
   m_Layer: 5
-  m_Name: LoginRandom
+  m_Name: LoginAsGuest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1708,7 +1708,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1609900445}
         m_TargetAssemblyTypeName: Multiplayer.PlayfabManager, Multiplayer
-        m_MethodName: RandomLogin
+        m_MethodName: GuestLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

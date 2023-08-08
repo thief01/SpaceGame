@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6301020503353099814
 MonoBehaviour:
@@ -81,3 +81,7 @@ MonoBehaviour:
   ship: {fileID: 3843969168143768873, guid: 3ded397f3f691cb4f89b989c23219d94, type: 3}
   asteroid: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
   explosion: {fileID: 3015355348395279521, guid: 37ce1ec53a769ac4997df98af6241787, type: 3}
+  cameraManager: {fileID: 443183066377688851}
+  weaponBehaviourBase: {fileID: 11400000, guid: 8bda10cd2efb1f44ebd5f9e2411a5059, type: 2}
+  scriptableObjectsToInject:
+  - {fileID: 11400000, guid: 8bda10cd2efb1f44ebd5f9e2411a5059, type: 2}

@@ -18,6 +18,8 @@ namespace Game.ZenjectInstallers
 
         [SerializeField] protected GameObject cameraManager;
 
+        [SerializeField] protected WeaponBehaviourBase weaponBehaviourBase;
+
         [SerializeField] protected List<ScriptableObject> scriptableObjectsToInject;
 
         protected BasePool bullets;
@@ -31,6 +33,7 @@ namespace Game.ZenjectInstallers
         {
             Debug.Log("Installing bindings");
             Container.Bind<IDamageProvider>().To<IDamageProvider>().FromInstance(new BaseDamageProvider());
+            Container.Bind<WeaponBehaviourBase>().To<WeaponBehaviourBase>().FromInstance(weaponBehaviourBase);
             BindPools();
             InjectScriptables();
             InjectToPools();

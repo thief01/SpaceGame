@@ -253,6 +253,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7002043515682267881, guid: 64a87d1c06854124289565b210d2d3ac, type: 3}
     - target: {fileID: -5761470883506035628, guid: 9abfd90e62f72324ea829c222f6fab18, type: 3}
+      propertyPath: weaponBehaviourBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 8bda10cd2efb1f44ebd5f9e2411a5059, type: 2}
+    - target: {fileID: -5761470883506035628, guid: 9abfd90e62f72324ea829c222f6fab18, type: 3}
       propertyPath: scriptableObjectsToInject.Array.size
       value: 1
       objectReference: {fileID: 0}

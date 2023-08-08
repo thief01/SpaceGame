@@ -1,5 +1,6 @@
 using Game.Classes;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Character
 {
@@ -17,7 +18,7 @@ namespace Game.Character
             }
         }
         [SerializeField] private Transform muzzle;
-        [SerializeField] private WeaponBehaviourBase weaponBehaviourBase;
+        [Inject] private WeaponBehaviourBase weaponBehaviourBase;
 
         private WeaponUserData weaponUserData;
 

@@ -28,16 +28,6 @@ namespace Game.Character
         }
 
         private float time;
-        private void Update()
-        {
-            if (time > 1)
-            {
-                Debug.Log(gameObject.name + " " + damageProvider);
-                time = 0;
-            }
-
-            time += Time.deltaTime;
-        }
 
         public void Respawn()
         {

@@ -11,21 +11,21 @@ namespace Game.ZenjectInstallers
 {
     public class ZenjectInstallerMono : MonoInstaller<ZenjectInstallerMono>
     {
-        [SerializeField] private GameObject bullet;
-        [SerializeField] private GameObject ship;
-        [SerializeField] private GameObject asteroid;
-        [SerializeField] private GameObject explosion;
+        [SerializeField] protected GameObject bullet;
+        [SerializeField] protected GameObject ship;
+        [SerializeField] protected GameObject asteroid;
+        [SerializeField] protected GameObject explosion;
 
-        [SerializeField] private GameObject cameraManager;
+        [SerializeField] protected GameObject cameraManager;
 
-        [SerializeField] private List<ScriptableObject> scriptableObjectsToInject;
+        [SerializeField] protected List<ScriptableObject> scriptableObjectsToInject;
 
-        private SimplePool bullets;
-        private SimplePool ships;
-        private SimplePool asteroids;
-        private SimplePool explosions;
+        protected BasePool bullets;
+        protected BasePool ships;
+        protected BasePool asteroids;
+        protected BasePool explosions;
 
-        private List<SimplePool> allPools = new List<SimplePool>();
+        protected List<BasePool> allPools = new List<BasePool>();
 
         public override void InstallBindings()
         {
@@ -38,7 +38,7 @@ namespace Game.ZenjectInstallers
             InitPlayer();
         }
 
-        private void BindPools()
+        protected virtual void BindPools()
         {
             bullets = new SimplePool(bullet, 10);
             ships = new SimplePool(ship, 1);
@@ -51,14 +51,14 @@ namespace Game.ZenjectInstallers
             BindNewPool(explosions, "Explosions");
         }
 
-        private void BindNewPool(SimplePool simplePool, string poolId)
+        protected void BindNewPool(BasePool simplePool, string poolId)
         {
-            Container.Bind<SimplePool>().WithId(poolId).FromInstance(simplePool);
+            Container.Bind<BasePool>().WithId(poolId).FromInstance(simplePool);
             simplePool.InitPool();
             allPools.Add(simplePool);
         }
 
-        private void InitPlayer()
+        protected void InitPlayer()
         {
             var player = ships.GetNewObject().GetComponent<MovementControler>();
             player.transform.position = Vector3.zero;
@@ -73,7 +73,7 @@ namespace Game.ZenjectInstallers
             Container.Bind<CameraManager>().FromInstance(cameraManager).AsSingle();
         }
 
-        private void InjectScriptables()
+        protected void InjectScriptables()
         {
             for (int i = 0; i < scriptableObjectsToInject.Count; i++)
             {
@@ -81,7 +81,7 @@ namespace Game.ZenjectInstallers
             }
         }
 
-        private void InjectToPools()
+        protected void InjectToPools()
         {
             foreach (var pool in allPools)
             {

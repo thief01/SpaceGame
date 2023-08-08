@@ -1,27 +1,26 @@
 using Core.Pooling;
 using Game.Classes;
 using Game.Interfaces;
+using Game.ZenjectInstallers;
 using UnityEngine;
 using Zenject;
 
 namespace Multiplayer
 {
-    public class ZenjectInstallerMonoMultiplayer : MonoInstaller<ZenjectInstallerMonoMultiplayer>
+    public class ZenjectInstallerMonoMultiplayer : ZenjectInstallerMono
     {
-        [SerializeField] private GameObject bullet;
-        [SerializeField] private GameObject ship;
-        [SerializeField] private GameObject asteroid;
-        [SerializeField] private GameObject explosion;
-    
-        public override void InstallBindings()
+
+        protected override void BindPools()
         {
-            Debug.Log("Installing bindings");
-            Container.Bind<IDamageProvider>().To<BaseDamageProvider>().FromInstance(new BaseDamageProvider());
-        
-            Container.Bind<BasePool>().WithId("Bullets").FromInstance(new MultiplayerPool(bullet, 20));
-            Container.Bind<BasePool>().WithId("Ships").FromInstance(new MultiplayerPool(ship, 1));
-            Container.Bind<BasePool>().WithId("Asteroids").FromInstance(new MultiplayerPool(asteroid, 30));
-            Container.Bind<BasePool>().WithId("Explosions").FromInstance(new MultiplayerPool(explosion, 30));
+            bullets = new MultiplayerPool(bullet, 10);
+            ships = new MultiplayerPool(ship, 1);
+            asteroids = new MultiplayerPool(asteroid, 10);
+            explosions = new SimplePool(explosion, 10);
+            
+            BindNewPool(bullets, "Bullets");
+            BindNewPool(ships, "Ships");
+            BindNewPool(asteroids, "Asteroids");
+            BindNewPool(explosions, "Explosions");
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Multiplayer
     {
         private void Awake()
         {
-            PhotonNetwork.Instantiate("PlayerPUN", Vector3.zero, Quaternion.identity);
+            //PhotonNetwork.Instantiate("PlayerPUN", Vector3.zero, Quaternion.identity);
         }
 
 

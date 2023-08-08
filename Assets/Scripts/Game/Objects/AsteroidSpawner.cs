@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Core.Pooling;
 using Photon.Pun;
@@ -25,6 +26,11 @@ namespace Game.Objects
                     return countOfAsteroidsPerPlayer * PhotonNetwork.CountOfPlayers;
                 return countOfAsteroidsPerPlayer * 4;
             }
+        }
+
+        private void Awake()
+        {
+            photonView = GetComponent<PhotonView>();
         }
 
         private void Update()

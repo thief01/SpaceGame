@@ -9,9 +9,14 @@ namespace Game.Classes
     {
         [SerializeField] protected float attackSpeed;
         [SerializeField] protected float bulletSpeed;
-        [SerializeField] protected GameObject bulletPrefab;
 
         [Inject(Id = "Bullets")] public BasePool bulletsPool;
+
+        [Inject(Id = "Bullets")]
+        public void InjectPool(BasePool basePool)
+        {
+            Debug.Log(basePool);
+        }
     
         public virtual void Shoot(WeaponUserData weaponUserData)
         {

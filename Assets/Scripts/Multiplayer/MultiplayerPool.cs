@@ -15,7 +15,7 @@ namespace Multiplayer
         {
             for (int i = 0; i < countOfObjects; i++)
             {
-                GameObject g = PhotonNetwork.Instantiate(gameObject.name, Vector3.zero, Quaternion.identity);
+                GameObject g = PhotonNetwork.Instantiate("Photon/Pools/"+gameObject.name, Vector3.zero, Quaternion.identity);
                 g.SetActive(false);
                 var basePoolObject = g.GetComponent<BasePoolObject>();
                 if (basePoolObject == null)

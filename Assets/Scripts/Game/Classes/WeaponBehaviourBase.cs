@@ -11,13 +11,7 @@ namespace Game.Classes
         [SerializeField] protected float bulletSpeed;
 
         [Inject(Id = "Bullets")] public BasePool bulletsPool;
-
-        [Inject(Id = "Bullets")]
-        public void InjectPool(BasePool basePool)
-        {
-            Debug.Log(basePool);
-        }
-    
+        
         public virtual void Shoot(WeaponUserData weaponUserData)
         {
             if (weaponUserData.CooldownControler.GetCooldown("WeaponBehaviourBase") > 0)

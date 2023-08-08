@@ -33,7 +33,7 @@ namespace Game.ZenjectInstallers
         {
             Debug.Log("Installing bindings");
             Container.Bind<IDamageProvider>().To<IDamageProvider>().FromInstance(new BaseDamageProvider());
-            Container.Bind<WeaponBehaviourBase>().To<WeaponBehaviourBase>().FromInstance(weaponBehaviourBase);
+            Container.Bind<WeaponBehaviourBase>().FromInstance(weaponBehaviourBase);
             BindPools();
             InjectScriptables();
             InjectToPools();

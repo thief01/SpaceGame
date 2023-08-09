@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 195783395259099860}
   - component: {fileID: 8769769033276855180}
   m_Layer: 3
-  m_Name: Text (TMP)
+  m_Name: NicknameLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,6 +387,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2165}
   - {fileID: 2334}
+  - {fileID: 8986857786980226189}
   - {fileID: 2364}
   - {fileID: 8769769033276855180}
   sceneViewId: 0

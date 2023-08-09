@@ -29,6 +29,7 @@ public class MultiplayerDamageTrigger : DamageTriggerBase
             targetId = targetPhotonView.ViewID
         };
         damageable.DealDamage(damageInfoPun);
+        OnDie.Invoke();
 
     }
 }

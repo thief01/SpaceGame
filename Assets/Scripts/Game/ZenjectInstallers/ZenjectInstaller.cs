@@ -1,13 +1,17 @@
+using Game.Classes;
+using Game.Interfaces;
 using UnityEngine;
 using Zenject;
 
-
-public class ZenjectInstaller : Installer<ZenjectInstaller>
+namespace Game.ZenjectInstallers
 {
-    public override void InstallBindings()
+    public class ZenjectInstaller : Installer<ZenjectInstaller>
     {
-        Debug.Log("Installing bindings");
-        Container.Bind<IDamageProvider>().To<BaseDamageProvider>().FromInstance(new BaseDamageProvider());
-        Container.Bind<PlayerData>().AsSingle();
+        public override void InstallBindings()
+        {
+            Debug.Log("Installing bindings");
+            Container.Bind<IDamageProvider>().To<BaseDamageProvider>().FromInstance(new BaseDamageProvider());
+            Container.Bind<PlayerData>().AsSingle();
+        }
     }
 }

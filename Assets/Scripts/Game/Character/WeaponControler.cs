@@ -1,44 +1,45 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Game.Classes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
-[RequireComponent(typeof(CooldownControler))]
-public class WeaponControler : MonoBehaviour
+namespace Game.Character
 {
-    public Transform Muzzle
+    [RequireComponent(typeof(CooldownControler))]
+    public class WeaponControler : MonoBehaviour
     {
-        get => muzzle;
-        set
+        public Transform Muzzle
         {
-            muzzle = value;
-            if (weaponUserData != null)
-                weaponUserData.Muzzle = muzzle;
+            get => muzzle;
+            set
+            {
+                muzzle = value;
+                if (weaponUserData != null)
+                    weaponUserData.Muzzle = muzzle;
+            }
         }
-    }
-    [SerializeField] private Transform muzzle;
-    [SerializeField] private WeaponBehaviourBase weaponBehaviourBase;
+        [SerializeField] private Transform muzzle;
+        [Inject] private WeaponBehaviourBase weaponBehaviourBase;
 
-    private WeaponUserData weaponUserData;
+        private WeaponUserData weaponUserData;
 
-    private void Awake()
-    {
-        weaponUserData = new WeaponUserData();
-        weaponUserData.Muzzle = muzzle;
-        weaponUserData.Owner = transform;
-        weaponUserData.CooldownControler = GetComponent<CooldownControler>();
-    }
+        private void Awake()
+        {
+            weaponUserData = new WeaponUserData();
+            weaponUserData.Muzzle = muzzle;
+            weaponUserData.Owner = transform;
+            weaponUserData.CooldownControler = GetComponent<CooldownControler>();
+        }
 
 
-    public void Shoot(Vector3 target)
-    {
-        weaponUserData.Target = target;
-        weaponBehaviourBase.Shoot(weaponUserData);
-    }
+        public void Shoot(Vector3 target)
+        {
+            weaponUserData.Target = target;
+            weaponBehaviourBase.Shoot(weaponUserData);
+        }
 
-    public void SetNewWeapon(WeaponBehaviourBase weaponBehaviourBase)
-    {
-        this.weaponBehaviourBase = weaponBehaviourBase;
+        public void SetNewWeapon(WeaponBehaviourBase weaponBehaviourBase)
+        {
+            this.weaponBehaviourBase = weaponBehaviourBase;
+        }
     }
 }

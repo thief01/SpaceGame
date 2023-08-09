@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Game.Interfaces;
 
-public class BaseDamageProvider : IDamageProvider
+namespace Game.Classes
 {
-    public void CalculateDamage(DamageInfo damageInfo)
+    public class BaseDamageProvider : IDamageProvider
     {
-        damageInfo.calculatedDamage = damageInfo.damage;
+        public void CalculateDamage(DamageInfo damageInfo)
+        {
+            damageInfo.calculatedDamage = damageInfo.damage;
+        }
     }
 }

@@ -1,94 +1,94 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class MovementControler : MonoBehaviour
+namespace Game.Character
 {
-    public float MovingAcceleration => movingAcceleration;
-    public float RotatingAccelerationDegree => rotatingAccelerationDegree;
-    public Transform ObjectToRotate => objectToRotateToRotate;
-    [SerializeField] private float movingAcceleration = 5;
-    [SerializeField] private float rotatingAccelerationDegree = 180;
-    [FormerlySerializedAs("objectToRotate")] [SerializeField] private Transform objectToRotateToRotate;
-    private Rigidbody2D rigidbody2D;
-
-    private bool movementBlocked = false;
-
-    private Coroutine breakingCoroutineRef;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class MovementControler : MonoBehaviour
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+        public float MovingAcceleration => movingAcceleration;
+        public float RotatingAccelerationDegree => rotatingAccelerationDegree;
+        public Transform ObjectToRotate => objectToRotateToRotate;
+        [SerializeField] private float movingAcceleration = 5;
+        [SerializeField] private float rotatingAccelerationDegree = 180;
+        [FormerlySerializedAs("objectToRotate")] [SerializeField] private Transform objectToRotateToRotate;
+        private Rigidbody2D rigidbody2D;
 
-    public void Rotate(Vector2 direction)
-    {
-        if (direction == Vector2.zero)
-            return;
+        private bool movementBlocked = false;
 
-        float angle = CalculateAngleFromDirection(direction);
-        objectToRotateToRotate.eulerAngles = new Vector3(0, 0,
-            Mathf.MoveTowardsAngle(objectToRotateToRotate.eulerAngles.z, angle, rotatingAccelerationDegree * Time.deltaTime));
-    }
+        private Coroutine breakingCoroutineRef;
 
-    public void Accelerate(float input)
-    {
-        Vector3 acceleration = objectToRotateToRotate.up * movingAcceleration * input * Time.deltaTime;
+        private void Awake()
+        {
+            rigidbody2D = GetComponent<Rigidbody2D>();
+        }
 
-        rigidbody2D.velocity += new Vector2(acceleration.x, acceleration.y);
-    }
+        public void Rotate(Vector2 direction)
+        {
+            if (direction == Vector2.zero)
+                return;
 
-    private float CalculateAngleFromDirection(Vector2 direction)
-    {
-        return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-    }
+            float angle = CalculateAngleFromDirection(direction);
+            objectToRotateToRotate.eulerAngles = new Vector3(0, 0,
+                Mathf.MoveTowardsAngle(objectToRotateToRotate.eulerAngles.z, angle, rotatingAccelerationDegree * Time.deltaTime));
+        }
+
+        public void Accelerate(float input)
+        {
+            Vector3 acceleration = objectToRotateToRotate.up * movingAcceleration * input * Time.deltaTime;
+
+            rigidbody2D.velocity += new Vector2(acceleration.x, acceleration.y);
+        }
+
+        private float CalculateAngleFromDirection(Vector2 direction)
+        {
+            return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        }
     
-    public void InstaStop()
-    {
-        rigidbody2D.velocity = Vector2.zero;
-    }
+        public void InstaStop()
+        {
+            rigidbody2D.velocity = Vector2.zero;
+        }
 
-    public void Stop()
-    {
-        if(breakingCoroutineRef!=null)
-            StopCoroutine(breakingCoroutineRef);
-        breakingCoroutineRef = StartCoroutine(BreakingCoroutine());
-    }
+        public void Stop()
+        {
+            if(breakingCoroutineRef!=null)
+                StopCoroutine(breakingCoroutineRef);
+            breakingCoroutineRef = StartCoroutine(BreakingCoroutine());
+        }
 
-    private IEnumerator BreakingCoroutine()
-    {
-        movementBlocked = true;
+        private IEnumerator BreakingCoroutine()
+        {
+            movementBlocked = true;
 
         
 
-        while (rigidbody2D.velocity.magnitude > 0)
-        {
-            Vector2 opposedDirection = -rigidbody2D.velocity.normalized;
-            float calculatedAngle = CalculateAngleFromDirection(opposedDirection);
-            float deltaAngle = Mathf.DeltaAngle(objectToRotateToRotate.eulerAngles.z, calculatedAngle);
-            if(Mathf.Abs(deltaAngle) > 0.01f)
+            while (rigidbody2D.velocity.magnitude > 0)
             {
-                Rotate(opposedDirection);
-                yield return null;
-            }
-            else
-            {
-                if(rigidbody2D.velocity.magnitude > 0.5f)
+                Vector2 opposedDirection = -rigidbody2D.velocity.normalized;
+                float calculatedAngle = CalculateAngleFromDirection(opposedDirection);
+                float deltaAngle = Mathf.DeltaAngle(objectToRotateToRotate.eulerAngles.z, calculatedAngle);
+                if(Mathf.Abs(deltaAngle) > 0.01f)
                 {
-                    Accelerate(1);
+                    Rotate(opposedDirection);
                     yield return null;
                 }
                 else
                 {
-                    rigidbody2D.velocity = Vector2.zero;
+                    if(rigidbody2D.velocity.magnitude > 0.5f)
+                    {
+                        Accelerate(1);
+                        yield return null;
+                    }
+                    else
+                    {
+                        rigidbody2D.velocity = Vector2.zero;
+                    }
                 }
             }
-        }
         
-        movementBlocked = false;
+            movementBlocked = false;
+        }
     }
 }

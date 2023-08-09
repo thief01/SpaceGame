@@ -13,8 +13,11 @@ namespace Game.Character
         public void OnDie()
         {
             BasePoolObject g = fxPool.GetNewObject();
-            g.transform.position = transform.position;
-            g.KillWithDelay(fxAliveTime);
+            if (g != null)
+            {
+                g.transform.position = transform.position;
+                g.KillWithDelay(fxAliveTime);
+            }
         }
 
     }

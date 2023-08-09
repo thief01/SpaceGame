@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Multiplayer.Character
 {
     [RequireComponent(typeof(HealthControler))]
-    public class HealthControlerProxy : MonoBehaviourPun, IDamageablePun, IKillablePun, IPunObservable
+    public class HealthControlerProxy : MonoBehaviour, IDamageablePun, IKillablePun, IPunObservable
     {
         private HealthControler healthControler;
         private PhotonView photonView;
@@ -70,16 +70,17 @@ namespace Multiplayer.Character
         //     };
         //     healthController.DealDamage(damageInfo);
         // }
-
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting)
             {
                 stream.SendNext(healthControler.CurrentHealth);
             }
-            else
+            
+            if (stream.IsReading)
             {
-                healthControler.SetHealth((int)stream.ReceiveNext());
+                int newHealth = (int)stream.ReceiveNext();
+                healthControler.SetHealth(newHealth);
             }
         }
     }

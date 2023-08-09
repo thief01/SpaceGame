@@ -29,6 +29,8 @@ namespace Game.Input
         {
             if (movementControler == null || weaponControler == null)
                 return;
+            if (!movementControler.gameObject.activeSelf)
+                return;
         
             movementControler.Rotate(playerInput.Ship.Moving.ReadValue<Vector2>());
             movementControler.Accelerate(playerInput.Ship.Acceleration.ReadValue<float>());

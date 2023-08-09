@@ -1,6 +1,7 @@
 using System.Collections;
 using Game.Classes;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Game.Character
@@ -11,14 +12,14 @@ namespace Game.Character
         private const float FIRST_ANIMATION_SPEED = 1.5f;
         private const float SECOND_ANIMATION_SPEED = 0.5f;
     
-        [SerializeField] private HealthController healthController;
+        [FormerlySerializedAs("healthController")] [SerializeField] private HealthControler healthControler;
     
         [SerializeField] private Image healthBar;
         [SerializeField] private Image animatedHealthBar;
     
         private void Awake()
         {
-            healthController.OnReceiveDamage.AddListener(OnReceivedDamage);
+            healthControler.OnReceiveDamage.AddListener(OnReceivedDamage);
         }
 
         private void OnEnable()
@@ -47,7 +48,7 @@ namespace Game.Character
 
             while (delta < 1)
             {
-                bar.fillAmount = Mathf.Lerp(startValue, healthController.PercentHealth, delta);
+                bar.fillAmount = Mathf.Lerp(startValue, healthControler.PercentHealth, delta);
                 delta += Time.deltaTime * animationSpeed;
                 yield return null;
             }

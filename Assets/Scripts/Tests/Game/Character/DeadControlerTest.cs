@@ -23,7 +23,7 @@ namespace Tests.Game.Character
         [UnityTest]
         public IEnumerator FX()
         {
-            var spawnedAsteroid = GameObject.Instantiate(loadedAsteroid).GetComponent<HealthController>();
+            var spawnedAsteroid = GameObject.Instantiate(loadedAsteroid).GetComponent<HealthControler>();
             spawnedAsteroid.Kill(new DamageInfo(){ });
             yield return null;
             Assert.IsNotNull(GameObject.FindGameObjectWithTag("Explosion"));
@@ -32,7 +32,7 @@ namespace Tests.Game.Character
         [UnityTest]
         public IEnumerator KillAsteroid()
         {
-            var spawnedAsteroid = GameObject.Instantiate(loadedAsteroid).GetComponent<HealthController>();
+            var spawnedAsteroid = GameObject.Instantiate(loadedAsteroid).GetComponent<HealthControler>();
             spawnedAsteroid.Kill(new DamageInfo(){ });
             yield return null;
             Assert.IsNull(GameObject.FindGameObjectWithTag("Asteroid"));
@@ -41,7 +41,7 @@ namespace Tests.Game.Character
         [UnityTest]
         public IEnumerator KillFX()
         {
-            var spawnedAsteroid = GameObject.Instantiate(loadedAsteroid).GetComponent<HealthController>();
+            var spawnedAsteroid = GameObject.Instantiate(loadedAsteroid).GetComponent<HealthControler>();
             spawnedAsteroid.Kill(new DamageInfo(){ });
             yield return new WaitForSeconds(WAIT_TILL_ANIMATION_END);
             Assert.IsNull(GameObject.FindGameObjectWithTag("Explosion"));

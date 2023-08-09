@@ -21,8 +21,6 @@ namespace Multiplayer.Character
             var damageable = col.gameObject.GetComponent<IDamageablePun>();
             if (damageable == null)
                 return;
-            if (!photonView.IsMine)
-                return;
             var targetPhotonView = col.gameObject.GetComponent<PhotonView>();
 
             DamageInfoPun damageInfoPun = new DamageInfoPun()

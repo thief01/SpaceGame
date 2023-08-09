@@ -7,23 +7,23 @@ using UnityEngine;
 
 namespace Multiplayer.Character
 {
-    [RequireComponent(typeof(HealthController))]
+    [RequireComponent(typeof(HealthControler))]
     public class HealthControlerProxy : MonoBehaviourPun, IDamageablePun, IKillablePun, IPunObservable
     {
-        private HealthController healthController;
+        private HealthControler healthControler;
         private PhotonView photonView;
     
         private void Awake()
         {
             photonView = GetComponent<PhotonView>();
-            healthController = GetComponent<HealthController>();
+            healthControler = GetComponent<HealthControler>();
         }
 
         public void DealDamage(DamageInfoPun damageInfo)
         {
             if (photonView.IsMine)
             {
-                healthController.DealDamage(damageInfo);
+                healthControler.DealDamage(damageInfo);
             }
             // else
             // {
@@ -35,7 +35,7 @@ namespace Multiplayer.Character
         {
             if (photonView.IsMine)
             {
-                healthController.Kill(damageInfo);
+                healthControler.Kill(damageInfo);
             }
             // else
             // {
@@ -75,11 +75,11 @@ namespace Multiplayer.Character
         {
             if (stream.IsWriting)
             {
-                stream.SendNext(healthController.CurrentHealth);
+                stream.SendNext(healthControler.CurrentHealth);
             }
             else
             {
-                healthController.SetHealth((int)stream.ReceiveNext());
+                healthControler.SetHealth((int)stream.ReceiveNext());
             }
         }
     }

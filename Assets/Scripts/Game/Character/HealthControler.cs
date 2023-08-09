@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Game.Character
 {
-    public class HealthController : MonoBehaviour, IDamageable, IKillable
+    public class HealthControler : MonoBehaviour, IDamageable, IKillable
     {
         public int CurrentHealth => currentHealth;
 
@@ -60,6 +60,7 @@ namespace Game.Character
         public void SetHealth(int health)
         {
             currentHealth = health;
+            OnReceiveDamage.Invoke(null);
         }
     }
 }

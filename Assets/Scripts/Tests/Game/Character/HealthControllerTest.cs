@@ -13,7 +13,7 @@ namespace Tests.Game.Character
     [TestFixture]
     public class HealthControllerTest : ZenjectUnitTestFixture
     {
-        private HealthController healthController;
+        private HealthControler healthControler;
         private GameObject gameObject;
 
         [SetUp]
@@ -23,7 +23,7 @@ namespace Tests.Game.Character
             ZenjectInstaller.Install(Container);
         
             gameObject = new GameObject("Health controller");
-            healthController = Container.InstantiateComponent<HealthController>(gameObject);
+            healthControler = Container.InstantiateComponent<HealthControler>(gameObject);
         }
 
         [Test]
@@ -36,9 +36,9 @@ namespace Tests.Game.Character
         public IEnumerator HealthControllerTestWithEnumeratorPasses()
         {
             yield return null;
-            int startHealth = healthController.CurrentHealth;
-            healthController.DealDamage(new DamageInfo() { damage = 5 });
-            Assert.AreEqual(startHealth - 5, healthController.CurrentHealth);
+            int startHealth = healthControler.CurrentHealth;
+            healthControler.DealDamage(new DamageInfo() { damage = 5 });
+            Assert.AreEqual(startHealth - 5, healthControler.CurrentHealth);
         }
 
         [TearDown]

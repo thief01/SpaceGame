@@ -6,9 +6,11 @@ using Zenject;
 
 namespace Game.Character
 {
-    public class HealthController : MonoBehaviour, IDamageable
+    public class HealthController : MonoBehaviour, IDamageable, IKillable
     {
         public int CurrentHealth => currentHealth;
+
+        public float PercentHealth => (float)currentHealth / (float)baseHealth;
 
         public UnityEvent<DamageInfo>OnBeforeDie = new UnityEvent<DamageInfo>();
         public UnityEvent<DamageInfo>OnDie = new UnityEvent<DamageInfo>();
@@ -53,6 +55,11 @@ namespace Game.Character
         public void Kill(DamageInfo damageInfo)
         {
             OnDie.Invoke(damageInfo);
+        }
+
+        public void SetHealth(int health)
+        {
+            currentHealth = health;
         }
     }
 }

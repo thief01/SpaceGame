@@ -2,7 +2,7 @@ using Core.Pooling;
 using Photon.Pun;
 using UnityEngine;
 
-namespace Multiplayer
+namespace Multiplayer.Pooling
 {
     public class MultiplayerPool : BasePool
     {
@@ -16,7 +16,7 @@ namespace Multiplayer
             
             for (int i = 0; i < countOfObjects; i++)
             {
-                GameObject g = PhotonNetwork.Instantiate("Photon/Pools/"+gameObject.name, Vector3.zero, Quaternion.identity);
+                GameObject g = PhotonNetwork.Instantiate("Photon/Pools/"+gameObject.name, Vector3.one * -10000, Quaternion.identity);
                 g.SetActive(false);
                 var basePoolObject = g.GetComponent<BasePoolObject>();
                 if (basePoolObject == null)

@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Game.Classes;
-using UnityEngine;
+using Multiplayer.Classes;
 
-public interface IKillablePun
+namespace Multiplayer.Interfaces
 {
-    void Kill(DamageInfoPun damageInfo);
+    public interface IKillablePun
+    {
+        void Kill(DamageInfoPun damageInfo);
+    }
 }

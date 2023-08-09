@@ -2,6 +2,7 @@ using Core.Pooling;
 using Game.Classes;
 using Game.Interfaces;
 using Game.ZenjectInstallers;
+using Multiplayer.Pooling;
 using UnityEngine;
 using Zenject;
 

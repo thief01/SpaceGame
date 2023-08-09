@@ -2,7 +2,7 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-namespace Multiplayer
+namespace Multiplayer.Character
 {
     [RequireComponent(typeof(TextMeshPro))]
     public class NicknameUpdater : MonoBehaviour, IPunObservable

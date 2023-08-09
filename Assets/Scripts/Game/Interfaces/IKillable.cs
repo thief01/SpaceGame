@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Game.Classes;
-using UnityEngine;
 
-public interface IKillable
+namespace Game.Interfaces
 {
-    void Kill(DamageInfo damageInfo);
+    public interface IKillable
+    {
+        void Kill(DamageInfo damageInfo);
+    }
 }

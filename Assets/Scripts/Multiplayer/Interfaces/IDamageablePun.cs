@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Game.Classes;
-using UnityEngine;
+using Multiplayer.Classes;
 
-public interface IDamageablePun
+namespace Multiplayer.Interfaces
 {
-    void DealDamage(DamageInfoPun damageInfo);
+    public interface IDamageablePun
+    {
+        void DealDamage(DamageInfoPun damageInfo);
+    }
 }

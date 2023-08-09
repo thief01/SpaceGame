@@ -1,63 +1,63 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Core.Pooling;
 using Photon.Pun;
 using UnityEngine;
 
-[RequireComponent(typeof(BasePoolObject))]
-public class BasePoolObjectProxy : MonoBehaviourPun
+namespace Multiplayer.Pooling
 {
-    private PhotonView photonView;
-    private BasePoolObject basePoolObject;
-
-    private void Awake()
+    [RequireComponent(typeof(BasePoolObject))]
+    public class BasePoolObjectProxy : MonoBehaviourPun
     {
-        photonView = GetComponent<PhotonView>();
-        basePoolObject = GetComponent<BasePoolObject>();
-    }
+        private PhotonView photonView;
+        private BasePoolObject basePoolObject;
+
+        private void Awake()
+        {
+            photonView = GetComponent<PhotonView>();
+            basePoolObject = GetComponent<BasePoolObject>();
+        }
     
     
-    public virtual void Kill()
-    {
-        if (photonView.IsMine)
+        public virtual void Kill()
         {
-            basePoolObject.Kill();
+            if (photonView.IsMine)
+            {
+                basePoolObject.Kill();
+            }
+            else
+            {
+                photonView.RPC("KillRPC", RpcTarget.Others);
+            }
         }
-        else
-        {
-            photonView.RPC("KillRPC", RpcTarget.Others);
-        }
-    }
 
-    public void KillWithDelay(float delay)
-    {
-        if (photonView.IsMine)
+        public void KillWithDelay(float delay)
         {
-            basePoolObject.Kill();
+            if (photonView.IsMine)
+            {
+                basePoolObject.Kill();
+            }
+            else
+            {
+                photonView.RPC("KillWithDelayRPC", RpcTarget.Others, delay);
+            }
         }
-        else
-        {
-            photonView.RPC("KillWithDelayRPC", RpcTarget.Others, delay);
-        }
-    }
 
-    [PunRPC]
-    private void KillRPC()
-    {
-        if (photonView.IsMine)
+        [PunRPC]
+        private void KillRPC()
         {
-            basePoolObject.Kill();   
+            if (photonView.IsMine)
+            {
+                basePoolObject.Kill();   
+            }
         }
-    }
 
-    [PunRPC]
-    private void KillWithDelayRPC(float delay)
-    {
-        if (photonView.IsMine)
+        [PunRPC]
+        private void KillWithDelayRPC(float delay)
         {
-            basePoolObject.KillWithDelay(delay);
+            if (photonView.IsMine)
+            {
+                basePoolObject.KillWithDelay(delay);
+            }
         }
-    }
 
+    }
 }

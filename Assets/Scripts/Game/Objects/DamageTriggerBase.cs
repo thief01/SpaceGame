@@ -9,21 +9,21 @@ namespace Game.Objects
     {
         public UnityEvent OnDie = new UnityEvent();
         [SerializeField] private float damage;
-        private DamageInfo damageInfo = new DamageInfo();
+        protected DamageInfo damageInfo = new DamageInfo();
 
-        private void Awake()
+        protected virtual void Awake()
         {
             damageInfo.damageOwner = transform;
             damageInfo.damage = damage;
 
         }
 
-        public void SetDamage(int damage)
+        public virtual void SetDamage(int damage)
         {
             damageInfo.damage = damage;
         }
     
-        private void OnCollisionEnter2D(Collision2D col)
+        protected virtual void OnCollisionEnter2D(Collision2D col)
         {
             var damageable = col.gameObject.GetComponent<IDamageable>();
             if (damageable == null)

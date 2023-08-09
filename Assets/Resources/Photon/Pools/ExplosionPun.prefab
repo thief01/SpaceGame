@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3015355348395279521, guid: 37ce1ec53a769ac4997df98af6241787, type: 3}
       propertyPath: m_Name
-      value: Explosion
+      value: ExplosionPun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015355348395279521, guid: 37ce1ec53a769ac4997df98af6241787, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7030033969825950249, guid: 37ce1ec53a769ac4997df98af6241787, type: 3}
       propertyPath: m_RootOrder
@@ -69,6 +73,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3015355348395279521, guid: 37ce1ec53a769ac4997df98af6241787, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4066469020459702243}
+    - targetCorrespondingSourceObject: {fileID: 3015355348395279521, guid: 37ce1ec53a769ac4997df98af6241787, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248213333612909487}
   m_SourcePrefab: {fileID: 100100000, guid: 37ce1ec53a769ac4997df98af6241787, type: 3}
 --- !u!1 &2207402829333855887 stripped
 GameObject:
@@ -127,3 +134,15 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &248213333612909487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207402829333855887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f24ca9cb2054a8449cbd86cc2acec39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

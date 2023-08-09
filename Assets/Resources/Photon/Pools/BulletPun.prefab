@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: -3643688992155179911, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 815906389578234999}
+      objectReference: {fileID: -7682224453714962767}
     - target: {fileID: -3643688992155179911, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3643688992155179911, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BasePoolObject, Core
+      value: BasePoolObjectProxy, Multiplayer
       objectReference: {fileID: 0}
     - target: {fileID: -3643688992155179911, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletPun
       objectReference: {fileID: 0}
+    - target: {fileID: 3423908700119118367, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -104,6 +108,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3423908700119118367, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2039862926187581153}
+    - targetCorrespondingSourceObject: {fileID: 3423908700119118367, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7682224453714962767}
+    - targetCorrespondingSourceObject: {fileID: 3423908700119118367, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6387018008816863366}
   m_SourcePrefab: {fileID: 100100000, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
 --- !u!1 &217187306138837543 stripped
 GameObject:
@@ -179,14 +189,43 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 0
---- !u!114 &815906389578234999 stripped
+--- !u!114 &-7682224453714962767
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6353137683647091633, guid: c8618680b8726b240b7b876670c7e22e, type: 3}
-  m_PrefabInstance: {fileID: 3208727212695556152}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217187306138837543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b1ae56e9abca894aba5f031e7bdc5a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f24ca9cb2054a8449cbd86cc2acec39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6387018008816863366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217187306138837543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e89ecfbe3a678438ad8b4d227a5124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7682224453714962767}
+        m_TargetAssemblyTypeName: BasePoolObjectProxy, Multiplayer
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  damage: 10

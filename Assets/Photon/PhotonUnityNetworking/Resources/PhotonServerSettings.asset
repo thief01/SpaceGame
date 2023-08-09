@@ -41,6 +41,10 @@ MonoBehaviour:
   - RespawnSpaceship
   - SwitchEnableObject
   - SetNickname
+  - DealDamageRPC
+  - KillRPC
+  - OnDieRPC
+  - KillWithDelayRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

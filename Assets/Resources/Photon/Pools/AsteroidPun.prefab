@@ -17,20 +17,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7715501448248232566}
+    - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 9121304404510167538}
+      objectReference: {fileID: 2594412965086930402}
     - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDie
       objectReference: {fileID: 0}
     - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Kill
       objectReference: {fileID: 0}
     - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DeadControlerProxy, Multiplayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: BasePoolObject, Core
+      value: BasePoolObjectProxy, Multiplayer
       objectReference: {fileID: 0}
     - target: {fileID: 4698622032630837972, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -85,10 +97,15 @@ PrefabInstance:
       value: AsteroidPun
       objectReference: {fileID: 0}
     - target: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7991543457767756170, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -104,6 +121,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8272932550421385355}
+    - targetCorrespondingSourceObject: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -9148273955958468642}
+    - targetCorrespondingSourceObject: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7715501448248232566}
+    - targetCorrespondingSourceObject: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2594412965086930402}
+    - targetCorrespondingSourceObject: {fileID: 5949112027074347560, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6510371141050957833}
   m_SourcePrefab: {fileID: 100100000, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
 --- !u!1 &1263371686719064182 stripped
 GameObject:
@@ -132,6 +161,7 @@ MonoBehaviour:
   - {fileID: 7573131630973604789}
   - {fileID: 8349633147620713677}
   - {fileID: -8272932550421385355}
+  - {fileID: -9148273955958468642}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -179,14 +209,79 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 0
---- !u!114 &9121304404510167538 stripped
+--- !u!114 &-9148273955958468642
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4436742740107107244, guid: 6e7ed1ff7ab2eaa4d9621ae909126ba2, type: 3}
-  m_PrefabInstance: {fileID: 4829855533268224606}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263371686719064182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b1ae56e9abca894aba5f031e7bdc5a3, type: 3}
+  m_Script: {fileID: 11500000, guid: e025c13f7aec32b498c974f96151544a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7715501448248232566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263371686719064182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe15f275fbb6f4f4aaa6cbfebf00c99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2594412965086930402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263371686719064182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f24ca9cb2054a8449cbd86cc2acec39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6510371141050957833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263371686719064182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e89ecfbe3a678438ad8b4d227a5124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7715501448248232566}
+        m_TargetAssemblyTypeName: DeadControlerProxy, Multiplayer
+        m_MethodName: OnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2594412965086930402}
+        m_TargetAssemblyTypeName: BasePoolObjectProxy, Multiplayer
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  damage: 1

@@ -1,20 +1,24 @@
+using System;
 using Photon.Pun;
+using UnityEngine;
 
 namespace Multiplayer
 {
     public class PhotonGameObject : MonoBehaviourPun, IPunObservable
     {
         private PhotonView photonView;
+        private bool active = false;
         private void Awake()
         {
             photonView = GetComponent<PhotonView>();
         }
-
+        
         private void OnEnable()
         {
             if (photonView.IsMine)
             {
                 photonView.RPC("SwitchEnableObject", RpcTarget.OthersBuffered, true);
+                active = true;
             }
         }
 
@@ -23,6 +27,7 @@ namespace Multiplayer
             if (photonView.IsMine)
             {
                 photonView.RPC("SwitchEnableObject", RpcTarget.OthersBuffered, false);
+                active = false;
             }
         }
 

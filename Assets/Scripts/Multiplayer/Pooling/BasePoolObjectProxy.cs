@@ -16,13 +16,7 @@ namespace Multiplayer.Pooling
             photonView = GetComponent<PhotonView>();
             basePoolObject = GetComponent<BasePoolObject>();
         }
-
-        private void Start()
-        {
-            gameObject.SetActive(false);
-        }
-
-
+        
         public virtual void Kill()
         {
             if (photonView.IsMine)

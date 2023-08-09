@@ -22,19 +22,15 @@ namespace Multiplayer.Character
             {
                 deadFxControler.OnDie();
             }
-            else
-            {
-                photonView.RPC("OnDieRPC", RpcTarget.Others);
-            }
         }
 
-        [PunRPC]
-        private void OnDieRPC()
-        {
-            if (photonView.IsMine)
-            {
-                deadFxControler.OnDie();
-            }
-        }
+        // [PunRPC]
+        // private void OnDieRPC()
+        // {
+        //     if (photonView.IsMine)
+        //     {
+        //         deadFxControler.OnDie();
+        //     }
+        // }
     }
 }

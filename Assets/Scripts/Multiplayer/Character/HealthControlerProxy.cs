@@ -25,10 +25,10 @@ namespace Multiplayer.Character
             {
                 healthController.DealDamage(damageInfo);
             }
-            else
-            {
-                photonView.RPC("DealDamageRPC", RpcTarget.Others, damageInfo.damage, damageInfo.targetId, damageInfo.ownerId);
-            }
+            // else
+            // {
+            //     photonView.RPC("DealDamageRPC", RpcTarget.Others, damageInfo.damage, damageInfo.targetId, damageInfo.ownerId);
+            // }
         }
 
         public void Kill(DamageInfoPun damageInfo)
@@ -37,39 +37,39 @@ namespace Multiplayer.Character
             {
                 healthController.Kill(damageInfo);
             }
-            else
-            {
-                photonView.RPC("KillRPC", RpcTarget.Others, damageInfo.damage, damageInfo.targetId, damageInfo.ownerId);
-            }
+            // else
+            // {
+            //     photonView.RPC("KillRPC", RpcTarget.Others, damageInfo.damage, damageInfo.targetId, damageInfo.ownerId);
+            // }
         }
 
-        [PunRPC]
-        private void KillRPC(float damage, int targetId, int ownerId)
-        {
-            if (!photonView.IsMine)
-                return;
-            DamageInfo damageInfo = new DamageInfo()
-            {
-                damage = damage,
-                damageTarget = PhotonNetwork.GetPhotonView(targetId).transform,
-                damageOwner = PhotonNetwork.GetPhotonView(ownerId).transform,
-            };
-            healthController.Kill(damageInfo);
-        }
-
-        [PunRPC]
-        private void DealDamageRPC(float damage, int targetId, int ownerId)
-        {
-            if (!photonView.IsMine)
-                return;
-            DamageInfo damageInfo = new DamageInfo()
-            {
-                damage = damage,
-                damageTarget = PhotonNetwork.GetPhotonView(targetId).transform,
-                damageOwner = PhotonNetwork.GetPhotonView(ownerId).transform,
-            };
-            healthController.DealDamage(damageInfo);
-        }
+        // [PunRPC]
+        // private void KillRPC(float damage, int targetId, int ownerId)
+        // {
+        //     if (!photonView.IsMine)
+        //         return;
+        //     DamageInfo damageInfo = new DamageInfo()
+        //     {
+        //         damage = damage,
+        //         damageTarget = PhotonNetwork.GetPhotonView(targetId).transform,
+        //         damageOwner = PhotonNetwork.GetPhotonView(ownerId).transform,
+        //     };
+        //     healthController.Kill(damageInfo);
+        // }
+        //
+        // [PunRPC]
+        // private void DealDamageRPC(float damage, int targetId, int ownerId)
+        // {
+        //     if (!photonView.IsMine)
+        //         return;
+        //     DamageInfo damageInfo = new DamageInfo()
+        //     {
+        //         damage = damage,
+        //         damageTarget = PhotonNetwork.GetPhotonView(targetId).transform,
+        //         damageOwner = PhotonNetwork.GetPhotonView(ownerId).transform,
+        //     };
+        //     healthController.DealDamage(damageInfo);
+        // }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {

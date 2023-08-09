@@ -1,3 +1,4 @@
+using System;
 using Core.Pooling;
 using Photon.Pun;
 using UnityEngine;
@@ -15,8 +16,13 @@ namespace Multiplayer.Pooling
             photonView = GetComponent<PhotonView>();
             basePoolObject = GetComponent<BasePoolObject>();
         }
-    
-    
+
+        private void Start()
+        {
+            gameObject.SetActive(false);
+        }
+
+
         public virtual void Kill()
         {
             if (photonView.IsMine)

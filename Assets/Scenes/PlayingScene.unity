@@ -404,6 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countOfAsteroidsPerPlayer: 5
   spawnZoneSize: 28.46
+  safeZoneSize: 4.69
 --- !u!114 &1414017811
 MonoBehaviour:
   m_ObjectHideFlags: 0

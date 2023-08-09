@@ -25,7 +25,7 @@ namespace Game.Classes
         protected void SpawnBullet(WeaponUserData weaponUserData)
         {
             var g = bulletsPool.GetNewObject();
-            g.KillWithDelay(30);
+            g.KillWithDelay(5);
             SetGameObjectData(g.gameObject, weaponUserData);
         }
 

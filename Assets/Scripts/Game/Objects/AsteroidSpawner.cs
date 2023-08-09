@@ -14,10 +14,10 @@ namespace Game.Objects
         [Inject(Id = "Asteroids")] public BasePool asteroidsPool;
         [SerializeField] private int countOfAsteroidsPerPlayer = 5;
         [SerializeField] private float spawnZoneSize;
+        [SerializeField] private float safeZoneSize;
 
         private List<BasePoolObject> spawnedAsteroids = new List<BasePoolObject>();
-        private PhotonView photonView;
-    
+
         private int finalCountOfAsteroids
         {
             get
@@ -26,11 +26,6 @@ namespace Game.Objects
                     return countOfAsteroidsPerPlayer * PhotonNetwork.CountOfPlayers;
                 return countOfAsteroidsPerPlayer * 4;
             }
-        }
-
-        private void Awake()
-        {
-            photonView = GetComponent<PhotonView>();
         }
 
         private void Update()
@@ -44,6 +39,8 @@ namespace Game.Objects
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, spawnZoneSize);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, safeZoneSize);
         }
 
         private void UpdateAsteroids()
@@ -68,7 +65,7 @@ namespace Game.Objects
                 if (asteroid != null)
                 {
                     asteroid.transform.position = Quaternion.Euler(0, 0, Random.Range(0, 360)) *
-                                                  new Vector3(Random.Range(-spawnZoneSize / 2, spawnZoneSize / 2), 0, 0);
+                                                  new Vector3(Random.Range( safeZoneSize, spawnZoneSize), 0, 0);
                 }
                 else
                 {

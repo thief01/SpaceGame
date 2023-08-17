@@ -13,7 +13,6 @@ namespace Multiplayer.Pooling
 
         public override void InitPool(GameObject gameObject, int countOfObjects)
         {
-            
             for (int i = 0; i < countOfObjects; i++)
             {
                 GameObject g = PhotonNetwork.Instantiate("Photon/Pools/"+gameObject.name, Vector2.one * - 10000, Quaternion.identity);
